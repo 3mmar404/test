@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عرض سعر متكامل - تصميم متجر إلكتروني احترافي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #27ae60;
+            --light: #ecf0f1;
+            --dark: #34495e;
+            --text: #2c3e50;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            color: var(--text);
+            line-height: 1.7;
+            position: relative;
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="none" stroke="%233498db" stroke-width="0.5" stroke-opacity="0.1" x="0" y="0" width="100" height="100"/></svg>');
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+            z-index: 0;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 30px;
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .header-title {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header-subtitle {
+            font-size: 1.4rem;
+            font-weight: 300;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, var(--accent), #2ecc71);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 60px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            position: relative;
+            color: var(--primary);
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            border-radius: 2px;
+        }
+        
+        /* Pricing Cards */
+        .pricing-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #2980b9 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .card-header.business {
+            background: linear-gradient(135deg, var(--accent) 0%, #16a085 100%);
+        }
+        
+        .card-title {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .card-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .card-body {
+            padding: 25px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        th {
+            background-color: rgba(52, 152, 219, 0.1);
+            font-weight: 600;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .features {
+            padding: 15px 0;
+            border-top: 1px dashed rgba(0, 0, 0, 0.1);
+        }
+        
+        .features li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .features i {
+            color: var(--accent);
+        }
+        
+        /* Service Card */
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin: 0 auto 40px;
+            max-width: 800px;
+        }
+        
+        .service-header {
+            background: linear-gradient(135deg, var(--primary) 0%, #2c3e50 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .price-tag {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: var(--accent);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.3rem;
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+        }
+        
+        .service-body {
+            padding: 30px;
+        }
+        
+        .service-intro {
+            background: rgba(39, 174, 96, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .service-item {
+            background: rgba(236, 240, 241, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            border-left: 3px solid var(--secondary);
+        }
+        
+        .service-item:hover {
+            transform: translateY(-5px);
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .service-item h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .service-item h4 i {
+            color: var(--secondary);
+            background: rgba(52, 152, 219, 0.1);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .service-item ul {
+            padding-right: 20px;
+        }
+        
+        .service-item li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .service-item li::before {
+            content: "•";
+            color: var(--accent);
+            position: absolute;
+            right: -15px;
+            top: 0;
+        }
+        
+        /* Notes Section */
+        .notes-section {
+            background: rgba(236, 240, 241, 0.5);
+            padding: 40px;
+            border-radius: 15px;
+            margin: 40px auto;
+            max-width: 800px;
+        }
+        
+        .notes-section h3 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+        
+        .notes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .note-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            gap: 15px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .note-item i {
+            color: var(--accent);
+            font-size: 1.5rem;
+            min-width: 40px;
+            height: 40px;
+            background: rgba(39, 174, 96, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Results Section */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .result-card {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border-bottom: 4px solid var(--accent);
+        }
+        
+        .result-card:hover {
+            transform: translateY(-10px);
+            border-bottom: 4px solid var(--secondary);
+        }
+        
+        .result-card i {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            background: rgba(52, 152, 219, 0.1);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+        }
+        
+        .result-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        /* Final Price */
+        .final-price {
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 800px;
+            margin: 40px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .final-price::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+            z-index: 0;
+        }
+        
+        .final-price-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .final-price h3 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .price-amount {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: #f1c40f;
+        }
+        
+        .market-price {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent);
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+        }
+        
+        .cta-button:hover {
+            background: transparent;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(39, 174, 96, 0.4);
+        }
+        
+        /* Links Section */
+        .links-section {
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .link-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+        
+        .link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .link-card a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .link-card a:hover {
+            color: var(--primary);
+        }
+        
+        /* Calculator Section */
+        .calculator-section {
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 800px;
+        }
+        
+        .calculator-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .calculator-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .calculator-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .form-group label {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--dark);
+        }
+        
+        .form-group select, .form-group input {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            background: #f9f9f9;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group select:focus, .form-group input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        .calculate-btn {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .calculate-btn:hover {
+            background: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .calculator-result {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            border-radius: 15px;
+            padding: 30px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .result-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .result-price {
+            font-size: 3rem;
+            font-weight: 800;
+            text-align: center;
+            color: #f1c40f;
+            margin-bottom: 15px;
+        }
+        
+        .result-breakdown {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .result-breakdown li {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .result-breakdown li:last-child {
+            border-bottom: none;
+        }
+        
+        .result-breakdown .total {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.8;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .price-amount {
+                font-size: 2.8rem;
+            }
+            
+            .pricing-cards {
+                flex-direction: column;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-store"></i>
+                </div>
+                <h1 class="header-title">عرض سعر تصميم وتركيب متجر إلكتروني متكامل</h1>
+                <p class="header-subtitle">يُسعدنا تقديم عرض كامل لتأسيس متجر إلكتروني احترافي باستخدام <span class="highlight">WordPress + WooCommerce</span>، وربطه باستضافة Hostinger المدفوعة، مع تفعيل بوابة الدفع، وإدخال المنتجات، وضبط كل ما يلزم للتشغيل الفوري.</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hosting Plans -->
+    <section class="hosting-plans">
+        <div class="container">
+            <h2 class="section-title">الاستضافة المدفوعة – Hostinger Plans</h2>
+            
+            <div class="pricing-cards">
+                <!-- Premium Hosting Card -->
+                <div class="pricing-card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fas fa-crown"></i> Premium Web Hosting</h3>
+                        <p class="card-subtitle">الحل الأمثل للمتاجر الصغيرة والمتوسطة</p>
+                    </div>
+                    <div class="card-body">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>المدة</th>
+                                    <th>الخصم</th>
+                                    <th>السعر الشهري</th>
+                                    <th>السعر الإجمالي</th>
+                                    <th>السعر بالجنيه</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>48 شهر</td>
+                                    <td>78%</td>
+                                    <td>$2.59</td>
+                                    <td>$141.72</td>
+                                    <td>8,097 جنيه</td>
+                                </tr>
+                                <tr>
+                                    <td>24 شهر</td>
+                                    <td>73%</td>
+                                    <td>$3.29</td>
+                                    <td>$90.01</td>
+                                    <td>5,153 جنيه</td>
+                                </tr>
+                                <tr>
+                                    <td>12 شهر</td>
+                                    <td>64%</td>
+                                    <td>$4.29</td>
+                                    <td>$58.69</td>
+                                    <td>3,368 جنيه</td>
+                                </tr>
+                                <tr>
+                                    <td>1 شهر</td>
+                                    <td>—</td>
+                                    <td>$11.99</td>
+                                    <td>$13.67</td>
+                                    <td>697 جنيه</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="features">
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> <strong>يشمل:</strong> دومين مجاني لمدة سنة</li>
+                                <li><i class="fas fa-sync-alt"></i> <strong>تجديد الاشتراك:</strong> $10.99 شهريًا</li>
+                                <li><i class="fas fa-globe"></i> <strong>تجديد الدومين:</strong> $17.99 سنويًا (قبل الضرائب)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Business Hosting Card -->
+                <div class="pricing-card">
+                    <div class="card-header business">
+                        <h3 class="card-title"><i class="fas fa-chart-line"></i> Business Web Hosting (أقوى)</h3>
+                        <p class="card-subtitle">الأفضل للمتاجر الكبيرة والأعمال الناشئة</p>
+                    </div>
+                    <div class="card-body">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>المدة</th>
+                                    <th>الخصم</th>
+                                    <th>السعر الشهري</th>
+                                    <th>السعر الإجمالي</th>
+                                    <th>السعر بالجنيه</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>48 شهر</td>
+                                    <td>75%</td>
+                                    <td>$3.79</td>
+                                    <td>$207.39</td>
+                                    <td>11,886 جنيه</td>
+                                </tr>
+                                <tr>
+                                    <td>24 شهر</td>
+                                    <td>68%</td>
+                                    <td>$4.79</td>
+                                    <td>$131.05</td>
+                                    <td>7,509 جنيه</td>
+                                </tr>
+                                <tr>
+                                    <td>12 شهر</td>
+                                    <td>61%</td>
+                                    <td>$5.79</td>
+                                    <td>$79.21</td>
+                                    <td>4,526 جنيه</td>
+                                </tr>
+                                <tr>
+                                    <td>1 شهر</td>
+                                    <td>—</td>
+                                    <td>$14.99</td>
+                                    <td>$17.09</td>
+                                    <td>872 جنيه</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="features">
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> <strong>يشمل:</strong> دومين مجاني لمدة سنة + استضافة أقوى</li>
+                                <li><i class="fas fa-sync-alt"></i> <strong>تجديد الاشتراك:</strong> $13.99 شهريًا</li>
+                                <li><i class="fas fa-globe"></i> <strong>تجديد الدومين:</strong> $17.99 سنويًا (قبل الضرائب)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section class="calculator">
+        <div class="container">
+            <div class="calculator-section">
+                <h2 class="calculator-title"><i class="fas fa-calculator"></i> احسب تكلفة متجرك الإلكتروني</h2>
+                
+                <div class="calculator-grid">
+                    <div class="calculator-form">
+                        <div class="form-group">
+                            <label for="hosting-type">اختر نوع الباقة:</label>
+                            <select id="hosting-type">
+                                <option value="premium">Premium Web Hosting</option>
+                                <option value="business">Business Web Hosting</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="hosting-duration">اختر مدة الاشتراك:</label>
+                            <select id="hosting-duration">
+                                <option value="48">48 شهر (أفضل قيمة)</option>
+                                <option value="24">24 شهر</option>
+                                <option value="12">12 شهر</option>
+                                <option value="1">1 شهر</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>رسوم التجهيز والتسليم:</label>
+                            <input type="text" value="1,500 جنيه" readonly>
+                        </div>
+                        
+                        <button class="calculate-btn">احسب التكلفة النهائية</button>
+                    </div>
+                    
+                    <div class="calculator-result">
+                        <h3 class="result-title">التكلفة النهائية</h3>
+                        <div class="result-price" id="final-price">0 جنيه</div>
+                        
+                        <ul class="result-breakdown">
+                            <li>
+                                <span>سعر الاستضافة:</span>
+                                <span id="hosting-price">0 جنيه</span>
+                            </li>
+                            <li>
+                                <span>رسوم التجهيز:</span>
+                                <span>1,500 جنيه</span>
+                            </li>
+                            <li class="total">
+                                <span>الإجمالي:</span>
+                                <span id="total-price">0 جنيه</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Package -->
+    <section class="service-package">
+        <div class="container">
+            <div class="service-card">
+                <div class="service-header">
+                    <h2>الرسوم الإضافية (Setup + Activation)</h2>
+                    <div class="price-tag">1500 جنيه فقط</div>
+                </div>
+                
+                <div class="service-body">
+                    <div class="service-intro">
+                        السعر ده مش مجرد "تركيب"، دي باقة تأسيس كاملة لمتجر جاهز للبيع والتشغيل بنسبة 100%.  
+                        شمل المشروع إضافة أكثر من 700 صنف يدويًا (ما يعادل أكثر من 25 ساعة إدخال بيانات فعلية)، بالإضافة إلى بناء الموقع من الصفر (تصميم، برمجة، تجهيز استضافة، حماية، تهيئة، دعم موبايل)، ليصل إجمالي العمل المبذول إلى أكثر من 40 ساعة فعلية بتكلفة سوقية تتجاوز 6000 جنيه.
+                    </div>
+                    
+                    <h3 class="section-title">التفاصيل الكاملة:</h3>
+                    
+                    <div class="service-grid">
+                        <!-- Service Item 1 -->
+                        <div class="service-item">
+                            <h4><i class="fas fa-server"></i> تركيب وتأسيس الموقع</h4>
+                            <ul>
+                                <li>إعداد الاستضافة وربطها بالدومين</li>
+                                <li>تثبيت WordPress وضبط الإعدادات الأساسية</li>
+                                <li>تنصيب قالب احترافي</li>
+                                <li>ضبط اتجاه RTL ولغة الموقع</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Service Item 2 -->
+                        <div class="service-item">
+                            <h4><i class="fas fa-shopping-cart"></i> إعداد WooCommerce</h4>
+                            <ul>
+                                <li>تفعيل نظام المتجر</li>
+                                <li>إعداد ضريبة، شحن، كوبونات، سياسات</li>
+                                <li>تفعيل الحسابات والتسجيل</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Service Item 3 -->
+                        <div class="service-item">
+                            <h4><i class="fas fa-credit-card"></i> دمج بوابة الدفع الإلكترونية</h4>
+                            <ul>
+                                <li>ربط بوابة (فوري)</li>
+                                <li>إعداد API + Webhook</li>
+                                <li>اختبار الدفع الحقيقي وضمان التشغيل</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Service Item 4 -->
+                        <div class="service-item">
+                            <h4><i class="fas fa-paint-brush"></i> تصميم صفحات المتجر</h4>
+                            <ul>
+                                <li>تصميم احترافي للـ Homepage</li>
+                                <li>صفحات: "من نحن" – "تواصل معنا" – "الشروط والسياسات"</li>
+                                <li>صفحة المتجر – عرض المنتجات – تسجيل الدخول – حسابي – الطلبات... إلخ</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Service Item 5 -->
+                        <div class="service-item">
+                            <h4><i class="fas fa-box-open"></i> رفع المنتجات</h4>
+                            <ul>
+                                <li>إضافة كافة الأصناف المتوفرة حاليًا يدويًا (اسم، سعر، وصف، صور...)</li>
+                                <li>تصنيف المنتجات داخل المتجر</li>
+                                <li>ضبط خيارات المقاسات / الألوان إن وُجدت</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Service Item 6 -->
+                        <div class="service-item">
+                            <h4><i class="fas fa-shield-alt"></i> تحسين الأداء والحماية</h4>
+                            <ul>
+                                <li>حماية من الاختراق والسبام</li>
+                                <li>تسريع الموقع عبر Cache + Optimizer</li>
+                                <li>ضبط SEO باستخدام RankMath / Yoast</li>
+                                <li>تركيب دعم مباشر (واتساب + Live Chat)</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Service Item 7 -->
+                        <div class="service-item">
+                            <h4><i class="fas fa-search"></i> التهيئة لمحركات البحث</h4>
+                            <ul>
+                                <li>ربط Google Analytics + Search Console</li>
+                                <li>رفع Sitemap وفهرسة أولية</li>
+                                <li>إعداد العناوين والوصف الميتا</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Service Item 8 -->
+                        <div class="service-item">
+                            <h4><i class="fas fa-graduation-cap"></i> تسليم كامل</h4>
+                            <ul>
+                                <li>تجربة الشراء كاملة (من الدخول حتى الدفع)</li>
+                                <li>تسليم لوحة تحكم قابلة للتعديل</li>
+                                <li>إمكانية التعديل والإضافة لاحقًا من طرف العميل</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Important Notes -->
+            <div class="notes-section">
+                <h3>ملاحظات مهمة:</h3>
+                <div class="notes-grid">
+                    <div class="note-item">
+                        <i class="fas fa-info-circle"></i>
+                        <div>
+                            <p>✅ السعر لا يشمل الاستضافة أو الدومين (يتم توفيرهم من العميل أو حسب الباقة)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="note-item">
+                        <i class="fas fa-handshake"></i>
+                        <div>
+                            <p>✅ أي تعديل كبير مستقبلاً (تصميم – أقسام – لغات) يتم بالاتفاق</p>
+                        </div>
+                    </div>
+                    
+                    <div class="note-item">
+                        <i class="fas fa-key"></i>
+                        <div>
+                            <p>✅ بعد التسليم، الموقع بالكامل ملك للعميل وقابل للتحديث ذاتيًا</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Final Results -->
+            <h3 class="section-title">النتيجة النهائية:</h3>
+            
+            <div class="results-grid">
+                <div class="result-card">
+                    <i class="fas fa-check-circle"></i>
+                    <h4>موقع احترافي كامل التشغيل من أول يوم</h4>
+                </div>
+                
+                <div class="result-card">
+                    <i class="fas fa-credit-card"></i>
+                    <h4>بوابة دفع إلكترونية شغالة فعليًا</h4>
+                </div>
+                
+                <div class="result-card">
+                    <i class="fas fa-boxes"></i>
+                    <h4>منتجاتك مرفوعة ومقسمة ومنسقة</h4>
+                </div>
+                
+                <div class="result-card">
+                    <i class="fas fa-rocket"></i>
+                    <h4>جاهز للبيع والتسويق بدون أي تدخل تقني منك</h4>
+                </div>
+            </div>
+            
+            <!-- Final Price -->
+            <div class="final-price">
+                <div class="final-price-content">
+                    <h3>إجمالي رسوم التجهيز والتسليم</h3>
+                    <div class="price-amount">1500 جنيه فقط</div>
+                    <p class="market-price">قيمة الشغل الحقيقي: 3000–5000 جنيه (سعر السوق)</p>
+                    <a href="#contact" class="cta-button">ابدأ مشروعك الآن</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- External Links -->
+    <section class="links-section">
+        <div class="container">
+            <h3 class="section-title">أسعار الخدمة الحقيقية في السوق</h3>
+            
+            <div class="links-grid">
+                <div class="link-card">
+                    <a href="https://www.egy4web.com/services-ecommerce-web-design/" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> Egy4Web
+                    </a>
+                </div>
+                
+                <div class="link-card">
+                    <a href="https://khamsat.com/programming/woocommerce-development/3478770-%D8%A5%D9%86%D8%B4%D8%A7%D8%A1-%D9%85%D8%AA%D8%AC%D8%B1-%D8%A5%D9%84%D9%83%D8%AA%D8%B1%D9%88%D9%86%D9%8A-%D8%A7%D8%AD%D8%AA%D8%B1%D8%A7%D9%81%D9%8A-%D8%A8%D8%A7%D8%B3%D8%AA%D8%AE%D8%AF%D8%A7%D9%85-woocommerce-_wordpress" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> خمسات
+                    </a>
+                </div>
+                
+                <div class="link-card">
+                    <a href="https://www.sarems.com/%D8%B4%D8%B1%D9%83%D8%A9-%D8%AA%D8%B5%D9%85%D9%8A%D9%85-%D9%85%D8%AA%D8%AC%D8%B1-%D9%88%D9%88%D8%B1%D8%AF%D8%A8%D8%B1%D9%8A%D8%B3-%D9%85%D8%B5%D8%B1/" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> Sarems
+                    </a>
+                </div>
+                
+                <div class="link-card">
+                    <a href="https://mrslia.com/%D8%B9%D8%B1%D8%B6-%D8%B3%D8%B9%D8%B1-%D8%AA%D8%B5%D9%85%D9%8A%D9%85-%D9%85%D9%88%D9%82%D8%B9-%D8%A7%D9%84%D9%83%D8%AA%D8%B1%D9%88%D9%86%D9%8A/%D8%AA%D8%B5%D9%85%D9%8A%D9%85-%D9%85%D9%88%D8%A7%D9%82%D8%B9/" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> MrsLia
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-store"></i>
+                </div>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@ecommerce-eg.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+20 100 123 4567</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>+20 100 765 4321</span>
+                    </div>
+                </div>
+                
+                <p class="copyright">© 2023 جميع الحقوق محفوظة - تصميم وتطوير المتاجر الإلكترونية الاحترافية</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // بيانات الأسعار
+        const prices = {
+            premium: {
+                48: 8097,
+                24: 5153,
+                12: 3368,
+                1: 697
+            },
+            business: {
+                48: 11886,
+                24: 7509,
+                12: 4526,
+                1: 872
+            }
+        };
+        
+        // رسوم التجهيز الثابتة
+        const setupFee = 1500;
+        
+        // عناصر DOM
+        const hostingType = document.getElementById('hosting-type');
+        const hostingDuration = document.getElementById('hosting-duration');
+        const hostingPriceElement = document.getElementById('hosting-price');
+        const totalPriceElement = document.getElementById('total-price');
+        const finalPriceElement = document.getElementById('final-price');
+        const calculateBtn = document.querySelector('.calculate-btn');
+        
+        // حساب التكلفة
+        function calculateTotal() {
+            const selectedType = hostingType.value;
+            const selectedDuration = parseInt(hostingDuration.value);
+            
+            // الحصول على سعر الاستضافة
+            const hostingPrice = prices[selectedType][selectedDuration];
+            
+            // حساب الإجمالي
+            const totalPrice = hostingPrice + setupFee;
+            
+            // تحديث الواجهة
+            hostingPriceElement.textContent = hostingPrice.toLocaleString() + ' جنيه';
+            totalPriceElement.textContent = totalPrice.toLocaleString() + ' جنيه';
+            finalPriceElement.textContent = totalPrice.toLocaleString() + ' جنيه';
+        }
+        
+        // حساب التكلفة عند النقر على الزر
+        calculateBtn.addEventListener('click', calculateTotal);
+        
+        // حساب التكلفة عند تغيير الخيارات
+        hostingType.addEventListener('change', calculateTotal);
+        hostingDuration.addEventListener('change', calculateTotal);
+        
+        // حساب التكلفة الأولي عند تحميل الصفحة
+        window.addEventListener('load', calculateTotal);
+    </script>
+</body>
+</html>
