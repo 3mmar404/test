@@ -2,7 +2,10 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <title>عرض سعر متكامل - تصميم متجر إلكتروني احترافي</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
@@ -14,7 +17,9 @@
             --light: #ecf0f1;
             --dark: #34495e;
             --text: #2c3e50;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            --mobile-padding: 15px;
+            --mobile-margin: 20px;
         }
         
         * {
@@ -25,82 +30,57 @@
         
         body {
             font-family: 'Tajawal', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            background: #f8f9fa;
             color: var(--text);
-            line-height: 1.7;
-            position: relative;
-        }
-        
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="none" stroke="%233498db" stroke-width="0.5" stroke-opacity="0.1" x="0" y="0" width="100" height="100"/></svg>');
-            opacity: 0.1;
-            z-index: -1;
+            line-height: 1.6;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-text-size-adjust: 100%;
+            overflow-x: hidden;
         }
         
         .container {
-            max-width: 1200px;
+            width: 100%;
+            padding: 0 var(--mobile-padding);
             margin: 0 auto;
-            padding: 0 20px;
         }
         
-        /* Header Styles */
+        /* Header Styles - Mobile First */
         header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
             color: white;
-            padding: 30px 0;
+            padding: var(--mobile-margin) 0;
             text-align: center;
-            position: relative;
-            overflow: hidden;
             box-shadow: var(--shadow);
         }
         
-        header::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-            transform: rotate(30deg);
-            z-index: 0;
-        }
-        
         .header-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
+            padding: 0 var(--mobile-padding);
         }
         
         .logo {
-            font-size: 2.5rem;
+            font-size: 1.8rem;
             margin-bottom: 15px;
             display: inline-block;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px 30px;
-            border-radius: 50px;
-            backdrop-filter: blur(5px);
+            background: rgba(255, 255, 255, 0.15);
+            padding: 12px 20px;
+            border-radius: 25px;
         }
         
         .header-title {
-            font-size: 2.8rem;
-            margin-bottom: 15px;
-            font-weight: 800;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+            line-height: 1.4;
         }
         
         .header-subtitle {
-            font-size: 1.4rem;
-            font-weight: 300;
-            margin-bottom: 25px;
-            opacity: 0.9;
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+            opacity: 0.95;
+            line-height: 1.5;
         }
         
         .highlight {
@@ -110,61 +90,54 @@
             font-weight: 700;
         }
         
-        /* Section Styles */
+        /* Section Styles - Mobile First */
         section {
-            padding: 60px 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding: var(--mobile-margin) 0;
+            margin-bottom: var(--mobile-margin);
         }
         
         .section-title {
             text-align: center;
-            font-size: 2.2rem;
-            margin-bottom: 40px;
-            position: relative;
+            font-size: 1.4rem;
+            margin-bottom: var(--mobile-margin);
             color: var(--primary);
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 15px;
         }
         
         .section-title::after {
             content: "";
             position: absolute;
-            bottom: -10px;
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
+            width: 60px;
+            height: 3px;
             background: linear-gradient(90deg, var(--secondary), var(--accent));
             border-radius: 2px;
         }
         
-        /* Pricing Cards */
+        /* Pricing Cards - Mobile First */
         .pricing-cards {
             display: flex;
-            flex-wrap: wrap;
-            gap: 25px;
-            justify-content: center;
-            margin-bottom: 40px;
+            flex-direction: column;
+            gap: var(--mobile-margin);
+            margin-bottom: var(--mobile-margin);
         }
         
         .pricing-card {
             background: white;
-            border-radius: 15px;
+            border-radius: 12px;
             overflow: hidden;
             box-shadow: var(--shadow);
-            flex: 1;
-            min-width: 300px;
-            max-width: 500px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
         
         .card-header {
             background: linear-gradient(135deg, var(--secondary) 0%, #2980b9 100%);
             color: white;
-            padding: 25px;
+            padding: var(--mobile-padding);
             text-align: center;
         }
         
@@ -173,342 +146,366 @@
         }
         
         .card-title {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            font-weight: 600;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
         }
         
         .card-subtitle {
-            font-size: 1.1rem;
-            opacity: 0.9;
+            font-size: 0.9rem;
+            opacity: 0.95;
+            line-height: 1.4;
         }
         
         .card-body {
-            padding: 25px;
+            padding: var(--mobile-padding);
         }
         
+        /* Mobile-First Table Design */
         table {
             width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
         }
         
-        th, td {
-            padding: 12px 15px;
-            text-align: center;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        /* Stack table for mobile */
+        table, thead, tbody, th, td, tr {
+            display: block;
         }
         
-        th {
-            background-color: rgba(52, 152, 219, 0.1);
+        thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+        
+        tr {
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+        
+        td {
+            border: none;
+            position: relative;
+            padding-right: 50% !important;
+            text-align: right;
+            padding: 8px 10px;
+            font-size: 0.9rem;
+        }
+        
+        td:before {
+            content: attr(data-label) ": ";
+            position: absolute;
+            right: 6px;
+            width: 45%;
+            padding-left: 10px;
+            white-space: nowrap;
             font-weight: 600;
-        }
-        
-        tr:last-child td {
-            border-bottom: none;
+            color: var(--primary);
+            font-size: 0.85rem;
         }
         
         .features {
-            padding: 15px 0;
+            padding: 12px 0;
             border-top: 1px dashed rgba(0, 0, 0, 0.1);
+            margin-top: 10px;
+        }
+        
+        .features ul {
+            list-style: none;
         }
         
         .features li {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             display: flex;
-            align-items: center;
-            gap: 10px;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 0.9rem;
+            line-height: 1.4;
         }
         
         .features i {
             color: var(--accent);
+            margin-top: 2px;
+            flex-shrink: 0;
         }
         
-        /* Service Card */
+        /* Service Card - Mobile First */
         .service-card {
             background: white;
-            border-radius: 15px;
+            border-radius: 12px;
             overflow: hidden;
             box-shadow: var(--shadow);
-            margin: 0 auto 40px;
-            max-width: 800px;
+            margin-bottom: var(--mobile-margin);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
         
         .service-header {
             background: linear-gradient(135deg, var(--primary) 0%, #2c3e50 100%);
             color: white;
-            padding: 25px;
+            padding: var(--mobile-padding);
             text-align: center;
-            position: relative;
+        }
+        
+        .service-header h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            font-weight: 600;
         }
         
         .price-tag {
-            position: absolute;
-            top: -15px;
-            right: 20px;
+            display: inline-block;
             background: var(--accent);
             color: white;
-            padding: 10px 25px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 1.3rem;
-            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 10px;
+            box-shadow: 0 2px 8px rgba(39, 174, 96, 0.3);
         }
         
         .service-body {
-            padding: 30px;
+            padding: var(--mobile-padding);
         }
         
         .service-intro {
             background: rgba(39, 174, 96, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 25px;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            border-left: 4px solid var(--accent);
+            padding: var(--mobile-padding);
+            border-radius: 8px;
+            margin-bottom: var(--mobile-margin);
+            font-size: 1rem;
+            line-height: 1.6;
+            border-right: 4px solid var(--accent);
         }
         
         .service-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: var(--mobile-padding);
         }
         
         .service-item {
-            background: rgba(236, 240, 241, 0.5);
-            padding: 20px;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-            border-left: 3px solid var(--secondary);
-        }
-        
-        .service-item:hover {
-            transform: translateY(-5px);
             background: white;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: var(--mobile-padding);
+            border-radius: 8px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
         
         .service-item h4 {
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             color: var(--primary);
+            font-size: 1.1rem;
+            font-weight: 600;
         }
         
         .service-item h4 i {
             color: var(--secondary);
             background: rgba(52, 152, 219, 0.1);
-            width: 40px;
-            height: 40px;
+            width: 35px;
+            height: 35px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
+            font-size: 0.9rem;
         }
         
         .service-item ul {
-            padding-right: 20px;
+            list-style: none;
+            padding: 0;
         }
         
         .service-item li {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             position: relative;
+            padding-right: 20px;
+            font-size: 0.9rem;
+            line-height: 1.4;
         }
         
         .service-item li::before {
             content: "•";
             color: var(--accent);
             position: absolute;
-            right: -15px;
+            right: 0;
             top: 0;
+            font-weight: bold;
         }
         
-        /* Notes Section */
+        /* Notes Section - Mobile First */
         .notes-section {
-            background: rgba(236, 240, 241, 0.5);
-            padding: 40px;
-            border-radius: 15px;
-            margin: 40px auto;
-            max-width: 800px;
+            background: rgba(236, 240, 241, 0.3);
+            padding: var(--mobile-padding);
+            border-radius: 12px;
+            margin-bottom: var(--mobile-margin);
         }
         
         .notes-section h3 {
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: var(--mobile-margin);
             color: var(--primary);
-            font-size: 1.8rem;
+            font-size: 1.3rem;
+            font-weight: 700;
         }
         
         .notes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: var(--mobile-padding);
         }
         
         .note-item {
             background: white;
-            padding: 20px;
-            border-radius: 10px;
+            padding: var(--mobile-padding);
+            border-radius: 8px;
             display: flex;
-            gap: 15px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            gap: 12px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
         
         .note-item i {
             color: var(--accent);
-            font-size: 1.5rem;
-            min-width: 40px;
-            height: 40px;
+            font-size: 1.2rem;
+            min-width: 35px;
+            height: 35px;
             background: rgba(39, 174, 96, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-shrink: 0;
         }
         
-        /* Results Section */
+        .note-item div {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        /* Results Section - Mobile First */
         .results-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            max-width: 900px;
-            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: var(--mobile-padding);
         }
         
         .result-card {
             background: white;
-            padding: 30px 20px;
-            border-radius: 10px;
+            padding: var(--mobile-padding);
+            border-radius: 8px;
             text-align: center;
             box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            border-bottom: 4px solid var(--accent);
-        }
-        
-        .result-card:hover {
-            transform: translateY(-10px);
-            border-bottom: 4px solid var(--secondary);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-bottom: 3px solid var(--accent);
         }
         
         .result-card i {
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: var(--secondary);
-            margin-bottom: 20px;
             background: rgba(52, 152, 219, 0.1);
-            width: 80px;
-            height: 80px;
+            width: 60px;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            margin: 0 auto 20px;
+            margin: 0 auto 15px;
         }
         
         .result-card h4 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
             color: var(--primary);
+            font-weight: 600;
         }
         
-        /* Final Price */
+        .result-card p {
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: var(--dark);
+        }
+        
+        /* Final Price - Mobile First */
         .final-price {
             text-align: center;
             background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
             color: white;
-            padding: 40px;
-            border-radius: 15px;
-            max-width: 800px;
-            margin: 40px auto;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .final-price::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-            transform: rotate(30deg);
-            z-index: 0;
+            padding: var(--mobile-margin) var(--mobile-padding);
+            border-radius: 12px;
+            margin-bottom: var(--mobile-margin);
         }
         
         .final-price-content {
             position: relative;
-            z-index: 2;
         }
         
         .final-price h3 {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            font-weight: 600;
         }
         
         .price-amount {
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             font-weight: 800;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             color: #f1c40f;
         }
         
         .market-price {
-            font-size: 1.3rem;
+            font-size: 1rem;
             opacity: 0.9;
             margin-bottom: 20px;
+            line-height: 1.4;
         }
         
         .cta-button {
             display: inline-block;
             background: var(--accent);
             color: white;
-            padding: 15px 40px;
-            border-radius: 50px;
+            padding: 15px 30px;
+            border-radius: 25px;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 1.1rem;
             border: 2px solid var(--accent);
-            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+            box-shadow: 0 3px 10px rgba(39, 174, 96, 0.3);
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
         
-        .cta-button:hover {
-            background: transparent;
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(39, 174, 96, 0.4);
-        }
-        
-        /* Links Section */
+        /* Links Section - Mobile First */
         .links-section {
             text-align: center;
-            padding: 30px 0;
+            padding: var(--mobile-margin) 0;
         }
         
         .links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            max-width: 900px;
-            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: var(--mobile-padding);
         }
         
         .link-card {
             background: white;
-            padding: 20px;
-            border-radius: 10px;
+            padding: var(--mobile-padding);
+            border-radius: 8px;
             box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-        }
-        
-        .link-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
         
         .link-card a {
@@ -519,49 +516,153 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
+            min-height: 44px;
+            font-size: 1rem;
         }
         
-        .link-card a:hover {
-            color: var(--primary);
+        /* Competitor Section - Mobile First */
+        .competitor-section {
+            background: rgba(236, 240, 241, 0.3);
+            padding: var(--mobile-margin) 0;
         }
         
-        /* Calculator Section */
+        .competitor-grid {
+            display: flex;
+            flex-direction: column;
+            gap: var(--mobile-padding);
+            margin-bottom: var(--mobile-margin);
+        }
+        
+        .competitor-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-top: 3px solid var(--secondary);
+        }
+        
+        .competitor-header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #2980b9 100%);
+            color: white;
+            padding: var(--mobile-padding);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .competitor-header i {
+            font-size: 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .competitor-header h4 {
+            font-size: 1.1rem;
+            margin: 0;
+            font-weight: 600;
+        }
+        
+        .competitor-body {
+            padding: var(--mobile-padding);
+            text-align: center;
+        }
+        
+        .competitor-body p {
+            color: var(--dark);
+            margin-bottom: 15px;
+            line-height: 1.5;
+            font-size: 0.9rem;
+        }
+        
+        .competitor-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--accent);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            min-height: 44px;
+        }
+        
+        .competitor-note {
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+            border-radius: 12px;
+            padding: var(--mobile-padding);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+        
+        .note-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            text-align: center;
+        }
+        
+        .note-content i {
+            font-size: 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .note-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        
+        .note-content p {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+        
+        /* Calculator Section - Mobile First */
         .calculator-section {
             background: white;
-            border-radius: 15px;
+            border-radius: 12px;
             box-shadow: var(--shadow);
-            padding: 40px;
-            margin: 40px auto;
-            max-width: 800px;
+            padding: var(--mobile-padding);
+            margin-bottom: var(--mobile-margin);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
         
         .calculator-title {
             text-align: center;
-            font-size: 2rem;
-            margin-bottom: 30px;
+            font-size: 1.3rem;
+            margin-bottom: var(--mobile-margin);
             color: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
+            font-weight: 700;
         }
         
         .calculator-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-        
-        @media (max-width: 768px) {
-            .calculator-grid {
-                grid-template-columns: 1fr;
-            }
+            display: flex;
+            flex-direction: column;
+            gap: var(--mobile-margin);
         }
         
         .calculator-form {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: var(--mobile-padding);
         }
         
         .form-group {
@@ -572,7 +673,7 @@
         
         .form-group label {
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--dark);
         }
         
@@ -580,15 +681,15 @@
             padding: 12px 15px;
             border: 1px solid #ddd;
             border-radius: 8px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             background: #f9f9f9;
-            transition: all 0.3s ease;
+            min-height: 44px;
         }
         
         .form-group select:focus, .form-group input:focus {
             outline: none;
             border-color: var(--secondary);
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
         }
         
         .calculate-btn {
@@ -597,37 +698,29 @@
             border: none;
             padding: 15px;
             border-radius: 8px;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
             margin-top: 10px;
-        }
-        
-        .calculate-btn:hover {
-            background: #2980b9;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+            min-height: 44px;
         }
         
         .calculator-result {
             background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
-            border-radius: 15px;
-            padding: 30px;
+            border-radius: 12px;
+            padding: var(--mobile-padding);
             color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
         
         .result-title {
             text-align: center;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 600;
         }
         
         .result-price {
-            font-size: 3rem;
+            font-size: 2.2rem;
             font-weight: 800;
             text-align: center;
             color: #f1c40f;
@@ -636,14 +729,15 @@
         
         .result-breakdown {
             list-style: none;
-            margin-top: 20px;
+            margin-top: 15px;
         }
         
         .result-breakdown li {
             display: flex;
             justify-content: space-between;
-            padding: 10px 0;
+            padding: 8px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
         }
         
         .result-breakdown li:last-child {
@@ -652,70 +746,479 @@
         
         .result-breakdown .total {
             font-weight: 700;
-            font-size: 1.2rem;
-            margin-top: 10px;
+            font-size: 1.1rem;
+            margin-top: 8px;
         }
         
-        /* Footer */
+        /* Footer - Mobile First */
         footer {
             background: var(--primary);
             color: white;
             text-align: center;
-            padding: 30px 0;
-            margin-top: 60px;
+            padding: var(--mobile-margin) 0;
+            margin-top: var(--mobile-margin);
         }
         
         .footer-content {
-            max-width: 600px;
-            margin: 0 auto;
+            padding: 0 var(--mobile-padding);
         }
         
         .footer-logo {
-            font-size: 2rem;
-            margin-bottom: 20px;
+            font-size: 1.5rem;
+            margin-bottom: var(--mobile-padding);
+            font-weight: 600;
         }
         
         .contact-info {
             display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 20px 0;
+            flex-direction: column;
+            gap: 12px;
+            margin: var(--mobile-padding) 0;
         }
         
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.9rem;
         }
         
         .copyright {
-            margin-top: 20px;
-            padding-top: 20px;
+            margin-top: var(--mobile-padding);
+            padding-top: var(--mobile-padding);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             opacity: 0.8;
+            font-size: 0.85rem;
         }
         
-        /* Responsive */
-        @media (max-width: 768px) {
+        /* Touch-friendly and accessibility improvements */
+        * {
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Ensure minimum touch target size */
+        button, .cta-button, .competitor-link, .link-card a, .calculate-btn {
+            min-height: 44px;
+            min-width: 44px;
+        }
+        
+        /* Smooth scrolling for better UX */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Focus styles for accessibility */
+        button:focus, .cta-button:focus, .competitor-link:focus, .link-card a:focus, 
+        .calculate-btn:focus, input:focus, select:focus {
+            outline: 2px solid var(--secondary);
+            outline-offset: 2px;
+        }
+        
+        /* Additional optimizations for very small screens */
+        @media (max-width: 360px) {
+            :root {
+                --mobile-padding: 12px;
+                --mobile-margin: 16px;
+            }
+            
             .header-title {
-                font-size: 2.2rem;
+                font-size: 1.4rem;
             }
             
             .section-title {
-                font-size: 1.8rem;
+                font-size: 1.2rem;
             }
             
             .price-amount {
-                font-size: 2.8rem;
+                font-size: 2rem;
             }
             
+            /* Header adjustments */
+            header {
+                padding: 20px 0;
+            }
+            
+            .logo {
+                font-size: 1.8rem;
+                padding: 10px 20px;
+                margin-bottom: 10px;
+            }
+            
+            .header-title {
+                font-size: 1.6rem;
+                line-height: 1.3;
+                margin-bottom: 10px;
+            }
+            
+            .header-subtitle {
+                font-size: 1rem;
+                line-height: 1.5;
+                margin-bottom: 15px;
+            }
+            
+            /* Section adjustments */
+            section {
+                padding: 30px 0;
+            }
+            
+            .section-title {
+                font-size: 1.4rem;
+                margin-bottom: 25px;
+            }
+            
+            .section-title::after {
+                width: 60px;
+                height: 3px;
+            }
+            
+            /* Pricing cards mobile optimization */
             .pricing-cards {
                 flex-direction: column;
+                gap: 20px;
+            }
+            
+            .pricing-card {
+                min-width: auto;
+                margin: 0;
+            }
+            
+            .card-header {
+                padding: 20px 15px;
+            }
+            
+            .card-title {
+                font-size: 1.3rem;
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .card-subtitle {
+                font-size: 0.9rem;
+            }
+            
+            .card-body {
+                padding: 20px 15px;
+            }
+            
+            /* Table responsive */
+            table {
+                font-size: 0.85rem;
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            th, td {
+                padding: 8px 5px;
+                font-size: 0.8rem;
+                min-width: 80px;
+            }
+            
+            /* Alternative table layout for very small screens */
+            @media (max-width: 360px) {
+                table, thead, tbody, th, td, tr {
+                    display: block;
+                }
+                
+                thead tr {
+                    position: absolute;
+                    top: -9999px;
+                    left: -9999px;
+                }
+                
+                tr {
+                    border: 1px solid #ccc;
+                    margin-bottom: 10px;
+                    padding: 10px;
+                    border-radius: 8px;
+                    background: white;
+                }
+                
+                td {
+                    border: none;
+                    position: relative;
+                    padding-right: 50% !important;
+                    text-align: right;
+                    white-space: normal;
+                    min-width: auto;
+                }
+                
+                td:before {
+                    content: attr(data-label) ": ";
+                    position: absolute;
+                    right: 6px;
+                    width: 45%;
+                    padding-left: 10px;
+                    white-space: nowrap;
+                    font-weight: bold;
+                    color: var(--primary);
+                }
+            }
+            
+            /* Service cards mobile */
+            .service-card {
+                margin: 0 0 30px;
+            }
+            
+            .service-header {
+                padding: 20px 15px;
+            }
+            
+            .price-tag {
+                position: static;
+                display: inline-block;
+                margin-top: 15px;
+                font-size: 1.1rem;
+                padding: 8px 20px;
+            }
+            
+            .service-body {
+                padding: 20px 15px;
+            }
+            
+            .service-intro {
+                padding: 15px;
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+            
+            .service-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .service-item {
+                padding: 15px;
+            }
+            
+            .service-item h4 {
+                font-size: 1.1rem;
+                margin-bottom: 10px;
+            }
+            
+            .service-item h4 i {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
+            }
+            
+            /* Notes section mobile */
+            .notes-section {
+                padding: 25px 15px;
+                margin: 30px auto;
+            }
+            
+            .notes-section h3 {
+                font-size: 1.4rem;
+                margin-bottom: 20px;
+            }
+            
+            .notes-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .note-item {
+                padding: 15px;
+                gap: 10px;
+            }
+            
+            .note-item i {
+                min-width: 35px;
+                height: 35px;
+                font-size: 1.2rem;
+            }
+            
+            /* Results grid mobile */
+            .results-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .result-card {
+                padding: 25px 15px;
+            }
+            
+            .result-card i {
+                font-size: 2.5rem;
+                width: 70px;
+                height: 70px;
+                margin: 0 auto 15px;
+            }
+            
+            .result-card h4 {
+                font-size: 1.1rem;
+                margin-bottom: 10px;
+            }
+            
+            /* Final price mobile */
+            .final-price {
+                padding: 25px 20px;
+                margin: 30px auto;
+            }
+            
+            .final-price h3 {
+                font-size: 1.6rem;
+                margin-bottom: 10px;
+            }
+            
+            .price-amount {
+                font-size: 2.5rem;
+                margin-bottom: 8px;
+            }
+            
+            .market-price {
+                font-size: 1.1rem;
+                margin-bottom: 15px;
+            }
+            
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 1.1rem;
+            }
+            
+            /* Calculator mobile */
+            .calculator-section {
+                padding: 25px 15px;
+                margin: 30px auto;
+            }
+            
+            .calculator-title {
+                font-size: 1.5rem;
+                margin-bottom: 25px;
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .calculator-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .form-group label {
+                font-size: 1rem;
+            }
+            
+            .form-group select, .form-group input {
+                padding: 10px 12px;
+                font-size: 1rem;
+            }
+            
+            .calculate-btn {
+                padding: 12px;
+                font-size: 1.1rem;
+            }
+            
+            .calculator-result {
+                padding: 25px 20px;
+            }
+            
+            .result-title {
+                font-size: 1.4rem;
+                margin-bottom: 15px;
+            }
+            
+            .result-price {
+                font-size: 2.2rem;
+                margin-bottom: 12px;
+            }
+            
+            /* Links section mobile */
+            .links-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            .link-card {
+                padding: 15px;
+            }
+            
+            /* Competitor section mobile */
+            .competitor-section {
+                padding: 40px 0;
+            }
+            
+            .competitor-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin-bottom: 30px;
+            }
+            
+            .competitor-header {
+                padding: 15px;
+            }
+            
+            .competitor-header i {
+                font-size: 1.5rem;
+                width: 50px;
+                height: 50px;
+            }
+            
+            .competitor-header h4 {
+                font-size: 1.1rem;
+            }
+            
+            .competitor-body {
+                padding: 20px 15px;
+            }
+            
+            .competitor-body p {
+                font-size: 0.95rem;
+                margin-bottom: 15px;
+            }
+            
+            .competitor-link {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .competitor-note {
+                padding: 20px 15px;
+            }
+            
+            .note-content {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .note-content i {
+                font-size: 2rem;
+                width: 60px;
+                height: 60px;
+                margin: 0 auto;
+            }
+            
+            .note-content h4 {
+                font-size: 1.3rem;
+                margin-bottom: 8px;
+            }
+            
+            .note-content p {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+            
+            /* Footer mobile */
+            footer {
+                padding: 25px 0;
+                margin-top: 40px;
+            }
+            
+            .footer-logo {
+                font-size: 1.6rem;
+                margin-bottom: 15px;
             }
             
             .contact-info {
                 flex-direction: column;
-                gap: 15px;
+                gap: 12px;
+            }
+            
+            .contact-item {
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -759,32 +1262,32 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>48 شهر</td>
-                                    <td>78%</td>
-                                    <td>$2.59</td>
-                                    <td>$141.72</td>
-                                    <td>8,097 جنيه</td>
+                                    <td data-label="المدة">48 شهر</td>
+                                    <td data-label="الخصم">78%</td>
+                                    <td data-label="السعر الشهري">$2.59</td>
+                                    <td data-label="السعر الإجمالي">$141.72</td>
+                                    <td data-label="السعر بالجنيه">8,097 جنيه</td>
                                 </tr>
                                 <tr>
-                                    <td>24 شهر</td>
-                                    <td>73%</td>
-                                    <td>$3.29</td>
-                                    <td>$90.01</td>
-                                    <td>5,153 جنيه</td>
+                                    <td data-label="المدة">24 شهر</td>
+                                    <td data-label="الخصم">73%</td>
+                                    <td data-label="السعر الشهري">$3.29</td>
+                                    <td data-label="السعر الإجمالي">$90.01</td>
+                                    <td data-label="السعر بالجنيه">5,153 جنيه</td>
                                 </tr>
                                 <tr>
-                                    <td>12 شهر</td>
-                                    <td>64%</td>
-                                    <td>$4.29</td>
-                                    <td>$58.69</td>
-                                    <td>3,368 جنيه</td>
+                                    <td data-label="المدة">12 شهر</td>
+                                    <td data-label="الخصم">64%</td>
+                                    <td data-label="السعر الشهري">$4.29</td>
+                                    <td data-label="السعر الإجمالي">$58.69</td>
+                                    <td data-label="السعر بالجنيه">3,368 جنيه</td>
                                 </tr>
                                 <tr>
-                                    <td>1 شهر</td>
-                                    <td>—</td>
-                                    <td>$11.99</td>
-                                    <td>$13.67</td>
-                                    <td>697 جنيه</td>
+                                    <td data-label="المدة">1 شهر</td>
+                                    <td data-label="الخصم">—</td>
+                                    <td data-label="السعر الشهري">$11.99</td>
+                                    <td data-label="السعر الإجمالي">$13.67</td>
+                                    <td data-label="السعر بالجنيه">697 جنيه</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -818,32 +1321,32 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>48 شهر</td>
-                                    <td>75%</td>
-                                    <td>$3.79</td>
-                                    <td>$207.39</td>
-                                    <td>11,886 جنيه</td>
+                                    <td data-label="المدة">48 شهر</td>
+                                    <td data-label="الخصم">75%</td>
+                                    <td data-label="السعر الشهري">$3.79</td>
+                                    <td data-label="السعر الإجمالي">$207.39</td>
+                                    <td data-label="السعر بالجنيه">11,886 جنيه</td>
                                 </tr>
                                 <tr>
-                                    <td>24 شهر</td>
-                                    <td>68%</td>
-                                    <td>$4.79</td>
-                                    <td>$131.05</td>
-                                    <td>7,509 جنيه</td>
+                                    <td data-label="المدة">24 شهر</td>
+                                    <td data-label="الخصم">68%</td>
+                                    <td data-label="السعر الشهري">$4.79</td>
+                                    <td data-label="السعر الإجمالي">$131.05</td>
+                                    <td data-label="السعر بالجنيه">7,509 جنيه</td>
                                 </tr>
                                 <tr>
-                                    <td>12 شهر</td>
-                                    <td>61%</td>
-                                    <td>$5.79</td>
-                                    <td>$79.21</td>
-                                    <td>4,526 جنيه</td>
+                                    <td data-label="المدة">12 شهر</td>
+                                    <td data-label="الخصم">61%</td>
+                                    <td data-label="السعر الشهري">$5.79</td>
+                                    <td data-label="السعر الإجمالي">$79.21</td>
+                                    <td data-label="السعر بالجنيه">4,526 جنيه</td>
                                 </tr>
                                 <tr>
-                                    <td>1 شهر</td>
-                                    <td>—</td>
-                                    <td>$14.99</td>
-                                    <td>$17.09</td>
-                                    <td>872 جنيه</td>
+                                    <td data-label="المدة">1 شهر</td>
+                                    <td data-label="الخصم">—</td>
+                                    <td data-label="السعر الشهري">$14.99</td>
+                                    <td data-label="السعر الإجمالي">$17.09</td>
+                                    <td data-label="السعر بالجنيه">872 جنيه</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -930,9 +1433,7 @@
                 
                 <div class="service-body">
                     <div class="service-intro">
-                        السعر ده مش مجرد "تركيب"، دي باقة تأسيس كاملة لمتجر جاهز للبيع والتشغيل بنسبة 100%.  
-                        شمل المشروع إضافة أكثر من 700 صنف يدويًا (ما يعادل أكثر من 25 ساعة إدخال بيانات فعلية)، بالإضافة إلى بناء الموقع من الصفر (تصميم، برمجة، تجهيز استضافة، حماية، تهيئة، دعم موبايل)، ليصل إجمالي العمل المبذول إلى أكثر من 40 ساعة فعلية بتكلفة سوقية تتجاوز 6000 جنيه.
-                    </div>
+السعر ده مش مجرد "تركيب"، دي باقة تأسيس كاملة لمتجر جاهز للبيع والتشغيل بنسبة 100%. يشمل المشروع اصافه الاصناف يدويا (ما يعادل أكثر من 25 ساعة إدخال بيانات فعلية)، بالإضافة إلى بناء الموقع من الصفر (تصميم، برمجة، تجهيز استضافة، حماية، تهيئة، دعم موبايل)، ليصل إجمالي العمل المبذول إلى أكثر من 40 ساعة فعلية بتكلفة سوقية تتجاوز 6000 جنيه                    </div>
                     
                     <h3 class="section-title">التفاصيل الكاملة:</h3>
                     
@@ -1119,6 +1620,98 @@
         </div>
     </section>
 
+    <!-- Competitor Websites -->
+    <section class="competitor-section">
+        <div class="container">
+            <h3 class="section-title">مواقع منافسة مشابهة لما سنقوم بتصميمه</h3>
+            <p style="text-align: center; margin-bottom: 30px; font-size: 1.1rem; color: var(--dark);">
+                هذه أمثلة على مواقع احترافية مشابهة لما سنقوم بإنشائه لك
+            </p>
+            
+            <div class="competitor-grid">
+                <div class="competitor-card">
+                    <div class="competitor-header">
+                        <i class="fas fa-store"></i>
+                        <h4>Cotton IL Egypt</h4>
+                    </div>
+                    <div class="competitor-body">
+                        <p>متجر إلكتروني احترافي للملابس والمنسوجات</p>
+                        <a href="https://cottonilegypt.com/" target="_blank" class="competitor-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            زيارة الموقع
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="competitor-card">
+                    <div class="competitor-header">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h4>Cottonil Shop</h4>
+                    </div>
+                    <div class="competitor-body">
+                        <p>متجر متخصص في منتجات القطن عالية الجودة</p>
+                        <a href="https://cottonilshop.com/" target="_blank" class="competitor-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            زيارة الموقع
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="competitor-card">
+                    <div class="competitor-header">
+                        <i class="fas fa-globe"></i>
+                        <h4>Cottonil Online</h4>
+                    </div>
+                    <div class="competitor-body">
+                        <p>منصة تجارة إلكترونية شاملة للمنسوجات</p>
+                        <a href="https://cottonil-online.com/" target="_blank" class="competitor-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            زيارة الموقع
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="competitor-card">
+                    <div class="competitor-header">
+                        <i class="fas fa-info-circle"></i>
+                        <h4>Cottonil EG</h4>
+                    </div>
+                    <div class="competitor-body">
+                        <p>موقع تعريفي وتجاري متكامل للشركة</p>
+                        <a href="https://cottonil-eg.com/about-us/" target="_blank" class="competitor-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            زيارة الموقع
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="competitor-card">
+                    <div class="competitor-header">
+                        <i class="fas fa-laptop"></i>
+                        <h4>Cottonil Online Store</h4>
+                    </div>
+                    <div class="competitor-body">
+                        <p>متجر إلكتروني متطور بتصميم عصري</p>
+                        <a href="https://www.cottonilonline.com/" target="_blank" class="competitor-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            زيارة الموقع
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="competitor-note">
+                <div class="note-content">
+                    <i class="fas fa-lightbulb"></i>
+                    <div>
+                        <h4>ملاحظة مهمة</h4>
+                        <p>هذه المواقع تم تصميمها بميزانيات تتراوح بين 15,000 - 50,000 جنيه. نحن نقدم لك نفس الجودة والاحترافية بسعر لا يُقارن!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -1130,19 +1723,15 @@
                 <div class="contact-info">
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
-                        <span>info@ecommerce-eg.com</span>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-phone-alt"></i>
-                        <span>+20 100 123 4567</span>
                     </div>
                     <div class="contact-item">
                         <i class="fab fa-whatsapp"></i>
-                        <span>+20 100 765 4321</span>
                     </div>
                 </div>
                 
-                <p class="copyright">© 2023 جميع الحقوق محفوظة - تصميم وتطوير المتاجر الإلكترونية الاحترافية</p>
             </div>
         </div>
     </footer>
